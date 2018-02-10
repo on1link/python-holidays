@@ -28,7 +28,7 @@ class HolidayBase(dict):
     PROVINCES = []
 
     def __init__(self, years=[], expand=True, observed=True,
-                 prov=None, state=None):
+                 prov=None, state=None, region=None):
         self.observed = observed
         self.expand = expand
         if isinstance(years, int):
@@ -36,6 +36,8 @@ class HolidayBase(dict):
         self.years = set(years)
         if not getattr(self, 'prov', False):
             self.prov = prov
+        if not getattr(self, 'region', False):
+            self.region = region
         self.state = state
         for year in list(self.years):
             self._populate(year)
